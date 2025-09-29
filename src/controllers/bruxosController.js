@@ -1,7 +1,7 @@
 import dados from "../models/dados.js"; 
 const {bruxos} = dados; 
 
-// GET
+// GetAll
 const getAllBruxos = (req, res) => {
     const resultado = bruxos; 
     res.status(200).json ({
@@ -11,6 +11,7 @@ const getAllBruxos = (req, res) => {
     })
 };
 
+// GetById
 const bruxosById = (req, res) => {
     const id = parseInt (req.params.id);
     const bruxo = bruxos.find(b => b.id === id);
@@ -23,6 +24,25 @@ const bruxosById = (req, res) => {
       });
     }
   };
+
+// GetByCasa
+
+const getBruxoByCasa = (req, res) => {
+    let casa = req.params.casa;
+    casa = casa.toLowerCase(); 
+
+    const casasFiltradas = bruxos.filter((f) => 
+    f.casa.toLowerCase().includes(casa)
+    ); 
+    if (casasFiltradas.length > 0) {
+        res.status(200).json(casasFiltradas);
+    } else {
+        res.status(404).json ({
+            mensagem: "Casa não encontrada",
+        })
+    }
+};
+
 
   // CREATE 
 const createBruxo = (req, res) => {
@@ -139,4 +159,4 @@ const updateBruxo = (req, res) => {
             })
 }; 
 
-export {getAllBruxos, bruxosById, createBruxo, deleteBruxo, updateBruxo};
+export {getAllBruxos, bruxosById, getBruxoByCasa, createBruxo, deleteBruxo, updateBruxo};
