@@ -1,0 +1,19 @@
+{
+  "name": "status-code",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module", 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Maria Eduarda Ferreira Guimarães",
+  "license": "MIT",
+  "description": "Atividade com tema HarrY Potter (Status Code)",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
